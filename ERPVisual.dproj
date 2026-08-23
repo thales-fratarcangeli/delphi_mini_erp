@@ -1,0 +1,131 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2B7E4A19-9C33-4D58-B6E1-7A5F03C2D914}</ProjectGuid>
+        <MainSource>ERPVisual.dpr</MainSource>
+        <ProjectVersion>20.1</ProjectVersion>
+        <FrameworkType>VCL</FrameworkType>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+        <ProjectName Condition="'$(ProjectName)'==''">ERPVisual</ProjectName>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_DependencyCheckOutputName>ERPVisual.exe</DCC_DependencyCheckOutputName>
+        <DCC_ExeOutput>.\build</DCC_ExeOutput>
+        <DCC_DcuOutput>.\build\dcu_vcl</DCC_DcuOutput>
+        <DCC_UnitSearchPath>src\Core;src\Domain;src\Infra;src\App;src\UI;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_E>false</DCC_E>
+        <DCC_F>false</DCC_F>
+        <DCC_K>false</DCC_K>
+        <DCC_N>false</DCC_N>
+        <DCC_S>false</DCC_S>
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;System.Win;$(DCC_Namespace)</DCC_Namespace>
+        <SanitizedProjectName>ERPVisual</SanitizedProjectName>
+        <UsingDelphiRTL>true</UsingDelphiRTL>
+        <VerInfo_Locale>1046</VerInfo_Locale>
+        <!-- Sem isto o Windows usa os controles antigos (visual de 1998):
+             o manifesto com comctl32 v6 e o que liga os temas visuais. -->
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <Manifest_File>(None)</Manifest_File>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_DebugDCUs>true</DCC_DebugDCUs>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <DCC_RemoteDebug>true</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="src\Core\Core.Types.pas"/>
+        <DCCReference Include="src\Core\Core.Logger.pas"/>
+        <DCCReference Include="src\Core\Core.Container.pas"/>
+        <DCCReference Include="src\Core\Core.Events.pas"/>
+        <DCCReference Include="src\Core\Core.Validation.pas"/>
+        <DCCReference Include="src\Core\Core.Json.pas"/>
+        <DCCReference Include="src\Domain\Domain.Enums.pas"/>
+        <DCCReference Include="src\Domain\Domain.Entities.pas"/>
+        <DCCReference Include="src\Domain\Domain.Events.pas"/>
+        <DCCReference Include="src\Domain\Domain.Specifications.pas"/>
+        <DCCReference Include="src\Domain\Domain.Producao.pas"/>
+        <DCCReference Include="src\Domain\Domain.Interfaces.pas"/>
+        <DCCReference Include="src\Domain\Domain.Services.pas"/>
+        <DCCReference Include="src\Domain\Domain.Producao.Services.pas"/>
+        <DCCReference Include="src\Infra\Infra.Repositories.pas"/>
+        <DCCReference Include="src\Infra\Infra.Mapping.pas"/>
+        <DCCReference Include="src\Infra\Infra.Database.pas"/>
+        <DCCReference Include="src\Infra\Infra.Schema.pas"/>
+        <DCCReference Include="src\Infra\Infra.Repositories.Firebird.pas"/>
+        <DCCReference Include="src\Infra\Infra.UnitOfWork.pas"/>
+        <DCCReference Include="src\Infra\Infra.Gateway.pas"/>
+        <DCCReference Include="src\Infra\Infra.Persistence.pas"/>
+        <DCCReference Include="src\App\App.Bootstrap.pas"/>
+        <DCCReference Include="src\App\App.Seed.pas"/>
+        <DCCReference Include="src\App\App.Reports.pas"/>
+        <DCCReference Include="src\UI\UI.Principal.pas">
+            <Form>FormPrincipal</Form>
+        </DCCReference>
+        <DCCReference Include="src\UI\UI.Apontamento.pas">
+            <Form>FormApontamento</Form>
+        </DCCReference>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType>VCLApplication</Borland.ProjectType>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">ERPVisual.dpr</Source>
+                </Source>
+            </Delphi.Personality>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+            </Platforms>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\BDS\23.0\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\BDS\23.0\UserTools.proj')"/>
+</Project>

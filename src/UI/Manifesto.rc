@@ -1,0 +1,4 @@
+/* Recurso de manifesto.
+   Tipo 24 = RT_MANIFEST, id 1 = CREATEPROCESS_MANIFEST_RESOURCE_ID.
+   Compile com:  cgrc.exe Manifesto.rc -foManifesto.res            */
+1 24 "ERPVisual.manifest"
