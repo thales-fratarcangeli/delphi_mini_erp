@@ -1,7 +1,7 @@
 # ERP Industrial — projeto de estudo em Delphi
 
 Um sistema completo, em Object Pascal moderno, feito para **ler, quebrar e reconstruir**.
-Roda em qualquer edição do Delphi, inclusive a **Starter** (que é a instalada aqui).
+Roda em qualquer edição do Delphi, inclusive a **Starter** (gratuita).
 
 O domínio é um ERP industrial: clientes, produtos, estoque, pedidos, pagamentos
 e — o que diferencia um ERP de fábrica de um comercial — o **módulo de PCP**:
